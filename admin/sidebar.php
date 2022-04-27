@@ -13,7 +13,7 @@
     <!-- SidebarSearch Form -->
     <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-sidebar" type="search" placeholder="Tìm kiếm" aria-label="Search">
             <div class="input-group-append">
                 <button class="btn btn-sidebar">
                     <i class="fas fa-search fa-fw"></i>
@@ -23,10 +23,10 @@
     </div>
 
     <!-- Sidebar Menu -->
-    <nav class="mt-2">
+    <nav class="mt-2" style="height: calc(100% - 74px)">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="<?=ADMIN_URL?>/index.php" class="nav-link">
+                <a href="<?=ADMIN_URL?>/dasboard/" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Bảng điều khiển</p>
                 </a>

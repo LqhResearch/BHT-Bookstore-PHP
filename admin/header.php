@@ -1,4 +1,6 @@
-<?php include '../config/config.php'?>
+<?php include '../../config/config.php'?>
+<?php include '../../config/Database.php'?>
+<?php include '../../config/Pagination.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +8,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BHT Bookstore</title>
+    <link rel="icon" href="<?=ROOT_URL?>/assets/img/favicon.png" />
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,14 +31,16 @@
     <link rel="stylesheet" href="<?=TEMPLATE_URL?>/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?=TEMPLATE_URL?>/plugins/summernote/summernote-bs4.min.css">
+    <!-- My style -->
+    <link rel="stylesheet" href="<?=ROOT_URL?>/assets/css/style.css" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?=TEMPLATE_URL?>/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-        </div>
+        <!-- <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="Logo" height="217" width="699">
+        </div> -->
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -55,7 +61,7 @@
                     <div class="navbar-search-block">
                         <form class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Tìm kiếm" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -72,11 +78,6 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
                     </a>
                 </li>
             </ul>
