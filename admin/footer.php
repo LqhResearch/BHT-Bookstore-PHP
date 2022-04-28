@@ -35,4 +35,4 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="<?=TEMPLATE_URL?>/dist/js/pages/dashboard.js"></script>
 </body>
 
-</html>
+</html>1

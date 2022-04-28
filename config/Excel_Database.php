@@ -1,6 +1,6 @@
 <?php
-include PATH_ROOT . "admin/template/Classes/PHPExcel.php";
-include PATH_ROOT . "admin/template/SimpleXLSXGen.php";
+include PATH_ROOT . 'admin/template/Classes/PHPExcel.php';
+include PATH_ROOT . 'admin/template/SimpleXLSXGen.php';
 
 class Excel_Database
 {
@@ -78,7 +78,7 @@ class Excel_Database
         // Lấy data từ cơ sở dữ liệu
         $dataTable = Database::GetData("SELECT * FROM $tableName");
 
-        $xlsx = SimpleXLSXGen::fromArray(array_merge($titleTable, $dataTable), "Thông tin của " . $tableName);
+        $xlsx = SimpleXLSXGen::fromArray(array_merge($titleTable, $dataTable), 'Thông tin của ' . $tableName);
         $xlsx->setDefaultFont('Times New Roman')->setDefaultFontSize(14);
         $xlsx->downloadAs("$tableName.xlsx"); // hoặc save về thiết bị $xlsx->saveAs('books.xlsx');
     }
@@ -102,7 +102,7 @@ class Excel_Database
         }
         return [
             'successRow' => $successRow,
-            'totalRow' => count($dataTable),
+            'totalRow'   => count($dataTable),
         ];
     }
 }
