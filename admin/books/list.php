@@ -426,7 +426,7 @@
                                                     <td>' . number_format($book['Price']) . '</td>
                                                     <td>' . $book['CategoryName'] . '</td>
                                                     <td>
-                                                        <a href="info.php?show-id=' . $book['ISBN'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                        <a href="' . ROOT_URL . '/book-details.php?id=' . $book['ISBN'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
                                                         <a href="?edit-id=' . $book['ISBN'] . '"class="btn btn-warning"><i class="fas fa-marker"></i></a>
                                                         <a onclick="removeRow(' . $book['ISBN'] . ')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                     </td>

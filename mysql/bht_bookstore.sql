@@ -841,11 +841,10 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `order_details` (
-  `OrderDetailsID` int(11) NOT NULL,
+  `OrderDetailsID` varchar(10) NOT NULL,
   `ISBN` varchar(13) NOT NULL,
   `OrderID` varchar(10) DEFAULT NULL,
-  `Amount` int(11) DEFAULT NULL,
-  `CreatedAt` datetime(3) DEFAULT current_timestamp(3)
+  `Amount` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -882,7 +881,6 @@ CREATE TABLE `rating` (
   `ISBN` varchar(13) NOT NULL,
   `Username` varchar(64) NOT NULL,
   `Point` int(11) DEFAULT NULL,
-  `CreatedAt` datetime(3) DEFAULT current_timestamp(3),
   `UpdatedAt` datetime(3) DEFAULT current_timestamp(3)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

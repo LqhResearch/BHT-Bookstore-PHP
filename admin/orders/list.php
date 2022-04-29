@@ -144,7 +144,7 @@
                                                     <td>' . $order['CreatedAt'] . '</td>
                                                     <td>' . $order['Username'] . '</td>
                                                     <td>
-                                                        <a href="order-detail.php?show-id=' . $order['OrderID'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                        <a href="order-detail.php?order-id=' . $order['OrderID'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
                                                         <a onclick="removeRow(' . $order['OrderID'] . ')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>
