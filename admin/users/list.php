@@ -167,7 +167,7 @@
                                                     <td>' . $user['Fullname'] . '</td>
                                                     <td>' . $user['Phone'] . '</td>
                                                     <td>' . $user['Email'] . '</td>
-                                                    <td>' . $user['Avatar'] . '</td>
+                                                    <td><img height="50" src=' . ROOT_URL . $user['Avatar'] . ' alt="" /></td>
                                                     <td>' . number_format($user['Money']) . '</td>
                                                     <td>' . Helper::StatusBadge($user['Status']) . '</td>
                                                     <td>' . Helper::AccountTypeBadge($user['AccountTypeID']) . '</td>

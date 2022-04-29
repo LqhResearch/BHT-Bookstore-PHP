@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 27, 2022 lúc 04:15 AM
+-- Thời gian đã tạo: Th4 29, 2022 lúc 04:13 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.0.14
 
@@ -92,24 +92,25 @@ CREATE TABLE `books` (
   `QuantitySold` int(11) DEFAULT NULL,
   `InventoryNumber` int(11) DEFAULT NULL,
   `CategoryID` int(11) DEFAULT NULL,
-  `PublishID` int(11) DEFAULT NULL
+  `PublishID` int(11) DEFAULT NULL,
+  `UpdatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `books`
 --
 
-INSERT INTO `books` (`ISBN`, `BookTitle`, `Description`, `PublishYear`, `Weight`, `Size`, `PageNumber`, `Thumbnail`, `LanguageID`, `Price`, `QuantitySold`, `InventoryNumber`, `CategoryID`, `PublishID`) VALUES
-('9784041046593', 'Your Name', 'Truyện ngắn', 2016, 0, '130x176', 288, '/assets/img/books/your-name.jpg', 'vi', 60000, 100, 100, 6, 3),
-('9784088802206', 'Naruto tập 72', 'Truyện ngắn', 2021, 0, '117x176', 288, '/assets/img/books/naruto-vol-72.jpg', 'vi', 22000, 100, 100, 6, 3),
-('9786042212811', 'One Punch Man Tập 1', 'Truyện ngắn', 2018, 0, '117x176', 184, '/assets/img/books/opm-1.jpg', 'vi', 18000, 100, 100, 6, 1),
-('9786042212819', 'One Punch Man Tập 9', 'Truyện ngắn', 2018, 0, '117x176', 184, '/assets/img/books/opm-9.jpg', 'vi', 18000, 100, 100, 6, 1),
-('9786042212831', 'Death Note Tập 1', 'Truyện ngắn', 2020, 0, '117x176', 184, '/assets/img/books/death-note-1.jpg', 'vi', 35000, 100, 100, 6, 1),
-('9786042212840', 'Chú Thuật Hồi Chiến Tập 0', 'Truyện ngắn', 2021, 0, '117x176', 184, '/assets/img/books/chut-thuat-hoi-chien-0.jpg', 'vi', 30000, 100, 100, 6, 1),
-('9786042212842', 'Chú Thuật Hồi Chiến Tập 2', 'Truyện ngắn', 2021, 0, '117x176', 184, '/assets/img/books/chu-thuat-hoi-chien-2.jpg', 'vi', 30000, 100, 100, 6, 1),
-('9786042212847', 'Doraemon dài - Tập 14: Nobita và ba chàng hiệp sĩ mộng mơ', 'Truyện dài', 2021, 0, '130x190', 189, '/assets/img/books/doraemon-vol-14.jpg', 'vi', 18000, 100, 100, 6, 1),
-('9786042234252', 'Thám Tử Lừng Danh Conan - Tập 99', 'Truyện ngắn', 2022, 200, '176x113', 184, '/assets/img/books/conan-tap-99.jpg', 'vi', 20000, 100, 100, 6, 1),
-('9786042268127', 'Chú Thuật Hồi Chiến Tập 1', 'Truyện ngắn', 2022, 0, '117x176', 184, '/assets/img/books/chu-thuat-hoi-chien-tap-1.jpg', 'vi', 30000, 100, 100, 6, 1);
+INSERT INTO `books` (`ISBN`, `BookTitle`, `Description`, `PublishYear`, `Weight`, `Size`, `PageNumber`, `Thumbnail`, `LanguageID`, `Price`, `QuantitySold`, `InventoryNumber`, `CategoryID`, `PublishID`, `UpdatedAt`) VALUES
+('9784041046593', 'Your Name', 'Truyện ngắn', 2016, 0, '130 x 176', 288, '/assets/img/books/your-name.jpg', 'vi', 60000, 100, 100, 6, 3, '2022-04-29 09:10:55'),
+('9784088802206', 'Naruto tập 72', 'Truyện ngắn', 2021, 0, '117 x 176', 288, '/assets/img/books/naruto-vol-72.jpg', 'vi', 22000, 100, 100, 6, 3, '2022-04-29 09:10:55'),
+('9786042212811', 'One Punch Man Tập 1', 'Truyện ngắn', 2018, 0, '117 x 176', 184, '/assets/img/books/opm-1.jpg', 'vi', 18000, 100, 100, 6, 1, '2022-04-29 09:10:55'),
+('9786042212819', 'One Punch Man Tập 9', 'Truyện ngắn', 2018, 0, '117 x 176', 184, '/assets/img/books/opm-9.jpg', 'vi', 18000, 100, 100, 6, 1, '2022-04-29 09:10:55'),
+('9786042212831', 'Death Note Tập 1', 'Truyện ngắn', 2020, 0, '117 x 176', 184, '/assets/img/books/death-note-1.jpg', 'vi', 35000, 100, 100, 6, 1, '2022-04-29 09:10:55'),
+('9786042212840', 'Chú Thuật Hồi Chiến Tập 0', 'Truyện ngắn', 2021, 0, '117 x 176', 184, '/assets/img/books/chut-thuat-hoi-chien-0.jpg', 'vi', 30000, 100, 100, 6, 1, '2022-04-29 09:10:55'),
+('9786042212842', 'Chú Thuật Hồi Chiến Tập 2', 'Truyện ngắn', 2021, 0, '117 x 176', 184, '/assets/img/books/chu-thuat-hoi-chien-2.jpg', 'vi', 30000, 100, 100, 6, 1, '2022-04-29 09:10:55'),
+('9786042212847', 'Doraemon dài - Tập 14: Nobita và ba chàng hiệp sĩ mộng mơ', 'Truyện dài', 2021, 0, '130 x 190', 189, '/assets/img/books/doraemon-vol-14.jpg', 'vi', 18000, 100, 100, 6, 1, '2022-04-29 09:10:55'),
+('9786042234252', 'Thám Tử Lừng Danh Conan - Tập 99', 'Truyện ngắn', 2022, 200, '176 x 113', 184, '/assets/img/books/conan-tap-99.jpg', 'vi', 20000, 100, 100, 6, 1, '2022-04-29 09:10:55'),
+('9786042268127', 'Chú Thuật Hồi Chiến Tập 1', 'Truyện ngắn', 2022, 0, '117 x 176', 184, '/assets/img/books/chu-thuat-hoi-chien-tap-1.jpg', 'vi', 30000, 100, 100, 6, 1, '2022-04-29 09:10:55');
 
 -- --------------------------------------------------------
 
@@ -815,7 +816,6 @@ INSERT INTO `languages` (`LanguageID`, `LanguageName`) VALUES
 ('zh_Hant', 'Traditional Chinese'),
 ('zu', 'Tiếng Zulu'),
 ('zun', 'Tiếng Zuni'),
-('zxx', 'Không có nội dung ngôn ngữ'),
 ('zza', 'Tiếng Zaza');
 
 -- --------------------------------------------------------
@@ -969,8 +969,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Username`, `Password`, `Fullname`, `Phone`, `Email`, `Avatar`, `Money`, `Status`, `CreatedAt`, `AccountTypeID`) VALUES
-('Admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Quản trị viên', '0123456789', 'admin@gmail.com', '', 0, 1, '2022-04-27 08:07:50.207', 1),
-('QH', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Quốc Hưng', '0987654321', 'qh@gmail.com', '', 0, 0, '2022-04-27 08:07:50.207', 3);
+('Admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Quản trị viên', '0123456789', 'admin@gmail.com', '/assets/img/hacker.png', 0, 1, '2022-04-27 08:07:50.207', 1),
+('QH', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Quốc Hưng', '0987654321', 'qh@gmail.com', '', 0, 0, '2022-04-27 08:07:50.207', 2),
+('User1', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Người dùng mới', '0123456788', 'user1@gmail.com', '', 0, 1, '2022-04-29 09:07:08.000', 3);
 
 -- --------------------------------------------------------
 
@@ -1098,6 +1099,7 @@ ALTER TABLE `suppliers`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`Username`),
+  ADD UNIQUE KEY `Phone` (`Phone`,`Email`),
   ADD KEY `AccountTypeID` (`AccountTypeID`);
 
 --

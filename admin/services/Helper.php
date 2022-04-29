@@ -6,6 +6,11 @@ class Helper
         return $value == 1 ? "<span class='badge badge-success'>Hoạt động</span>" : "<span class='badge badge-danger'>Khóa</span>";
     }
 
+    public static function PaymentBadge($value)
+    {
+        return $value == 1 ? "<span class='badge badge-success'>Đã thanh toán</span>" : "<span class='badge badge-warning'>Chưa thanh toán</span>";
+    }
+
     public static function AccountTypeBadge($value)
     {
         if ($value == 1) {

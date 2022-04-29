@@ -2,6 +2,14 @@
 <?php include '../../config/Database.php'?>
 <?php include '../../config/Pagination.php'?>
 
+<?php
+    // Kiểm tra xem có phải tài khoản quản trị viên không?
+    session_start();
+    if (!isset($_SESSION['Role']) || $_SESSION['Role'] != 1) {
+        header('Location: ' . ROOT_URL . '/index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

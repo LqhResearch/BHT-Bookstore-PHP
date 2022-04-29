@@ -3,10 +3,11 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="<?=ROOT_URL?>/assets/img/user.png" class="img-circle elevation-2" alt="User image">
+            <?php $avatar = empty($_SESSION['Avatar']) ? '/assets/img/user.png' : $_SESSION['Avatar'];?>
+            <img src="<?=ROOT_URL?><?=$avatar?>" class="img-circle elevation-2" alt="User image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">Quốc Hưng</a>
+            <a href="#" class="d-block"><?=$_SESSION['DisplayName']?></a>
         </div>
     </div>
 
