@@ -1,61 +1,10 @@
 <?php include '../header.php'?>
 
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Add items
-        if (isset($_POST['action']) && $_POST['action'] == 'add') {
-            $name = isset($_POST['name']) ? $_POST['name'] : '';
-
-            if (!empty($name)) {
-                $sql = "INSERT INTO Categories VALUES (null, '$name')";
-                if (Database::NonQuery($sql)) {
-                    $message = [
-                        'type' => 'success',
-                        'text' => 'Thêm thành công',
-                    ];
-                }
-            } else {
-                $message = [
-                    'type' => 'warning',
-                    'text' => 'Tên thể loại không được trống',
-                ];
-            }
-        }
-
-        // Edit items
-        if (isset($_POST['action']) && $_POST['action'] == 'edit') {
-            $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
-            $name = isset($_POST['name']) ? $_POST['name'] : '';
-
-            if (!empty($name)) {
-                $sql = "UPDATE Categories SET CategoryName = '$name' WHERE CategoryID = $id";
-
-                if (Database::NonQuery($sql)) {
-                    $message = [
-                        'type' => 'success',
-                        'text' => 'Cập nhật thành công',
-                    ];
-                }
-            } else {
-                $message = [
-                    'type' => 'warning',
-                    'text' => 'Tên thể loại không được trống',
-                ];
-            }
-        }
-    }
-
-    // Delete items
-    if (isset($_GET['del-id'])) {
-        $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Categories WHERE CategoryID = $id";
-
-        if (Database::NonQuery($sql)) {
-            $message = [
-                'type' => 'success',
-                'text' => 'Xoá thành công',
-            ];
-        }
+    if (isset($_GET['payment'])) {
+        $orderID = $_GET['payment'];
+        $sql = "UPDATE Orders SET Status = 1 WHERE OrderID = '$orderID'";
+        Database::NonQuery($sql);
     }
 ?>
 
@@ -114,7 +63,7 @@
                                     <th>Ngày thanh toán</th>
                                     <th>Ngày tạo</th>
                                     <th>Người dùng</th>
-                                    <th width="113">Công cụ</th>
+                                    <th width="175">Công cụ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -134,6 +83,7 @@
 
                                     if ($ordes) {
                                         foreach ($ordes as $order) {
+                                            $paymentBtn = $order['Status'] == 0 ? '<a href="?payment=' . $order['OrderID'] . '" class="btn btn-success">Thanh toán</a>' : '';
                                             echo '
                                                 <tr>
                                                     <th>' . $order['OrderID'] . '</th>
@@ -144,8 +94,8 @@
                                                     <td>' . $order['CreatedAt'] . '</td>
                                                     <td>' . $order['Username'] . '</td>
                                                     <td>
-                                                        <a href="order-detail.php?order-id=' . $order['OrderID'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                                        <a onclick="removeRow(' . $order['OrderID'] . ')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                        <a href="print-order.php?order-id=' . $order['OrderID'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                        ' . $paymentBtn . '
                                                     </td>
                                                 </tr>
                                             ';

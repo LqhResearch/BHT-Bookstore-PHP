@@ -27,7 +27,7 @@
     <nav class="mt-2" style="height: calc(100% - 74px)">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="<?=ADMIN_URL?>/dasboard/" class="nav-link">
+                <a href="<?=ADMIN_URL?>/dashboard/" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Bảng điều khiển</p>
                 </a>
