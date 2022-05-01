@@ -130,7 +130,7 @@
                 </form>
 
                 <div class="cart-collaterals">
-                    <div class="cart_totals ">
+                    <div class="cart_totals">
                         <h2>Tổng tiền giỏ hàng</h2>
                         <?php
                             $totalMoney = 0;

@@ -19,7 +19,7 @@
             $username = isset($_POST['username']) ? $_POST['username'] : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-            $sql = "SELECT * FROM Users WHERE (Username = '$username' OR Phone = '$username' OR Email = '$username') AND Password = sha1('$password')";
+            $sql = "SELECT * FROM Users WHERE (Username = '$username' OR Phone = '$username' OR Email = '$username') AND Password = sha1('$password') AND Status = 1";
             $users = Database::GetData($sql);
             if ($users != null) {
                 session_start();

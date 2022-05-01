@@ -35,44 +35,6 @@ class Excel_Database
         return $data;
     }
 
-    /*public static function ExportExcel($tableName)
-    {
-    // Lấy data từ cơ sở dữ liệu
-    $dataTable = Database::GetData("SELECT * FROM $tableName");
-
-    //Khởi tạo đối tượng
-    $excel = new PHPExcel();
-    //Chọn trang cần ghi (là số từ 0->n)
-    $excel->setActiveSheetIndex(0);
-    //Tạo tiêu đề cho trang. (có thể không cần)
-    $excel->getActiveSheet()->setTitle("Thông tin của $tableName");
-
-    // //Xét chiều rộng cho từng, nếu muốn set height thì dùng setRowHeight()
-    $excel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
-    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
-    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30);
-
-    //Xét in đậm cho khoảng cột
-    $excel->getActiveSheet()->getStyle('A1:C1')->getFont()->setBold(true);
-
-    //Tạo tiêu đề cho từng cột
-    $excel->getActiveSheet()->setCellValue('A1', 'ID')
-    ->setCellValue('B1', 'Tên shipper')
-    ->setCellValue('C1', 'Số điện thoại');
-
-    // Thực hiện thêm dữ liệu vào từng ô bằng vòng lặp bắt đầu từ dòng bắt đầu = 2
-    $numRow = 2;
-    foreach ($dataTable as $row) {
-    $excel->getActiveSheet()->setCellValue('A' . $numRow, $row[0])
-    ->setCellValue('B' . $numRow, $row[1])
-    ->setCellValue('C' . $numRow, $row[2]);
-    $numRow++;
-    }
-
-    // Khởi tạo đối tượng PHPExcel_IOFactory để thực hiện ghi file ở đây mình lưu file dưới dạng excel2007
-    PHPExcel_IOFactory::createWriter($excel, 'Excel2007')->save('data.xlsx');
-    }*/
-
     public static function ExportExcel($tableName, $titleTable = [])
     {
         // Lấy data từ cơ sở dữ liệu

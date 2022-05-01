@@ -20,11 +20,13 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Danh mục</h2>
                     <ul>
-                        <li><a href="<?=ROOT_URL . '/category-book.php?CategoryID=8'?>">Sách thiếu nhi</a></li>
-                        <li><a href="<?=ROOT_URL . '/category-book.php?CategoryID=6'?>">Truyện, tiểu thuyết</a></li>
-                        <li><a href="<?=ROOT_URL . '/category-book.php?CategoryID=4'?>">Văn hóa xã hội – Lịch sử</a></li>
-                        <li><a href="<?=ROOT_URL . '/category-book.php?CategoryID=2'?>">Khoa học công nghệ – Kinh tế</a></li>
-                        <li><a href="<?=ROOT_URL . '/category-book.php?CategoryID=1'?>">Chính trị – Pháp luật</a></li>
+                        <?php
+                            $sql = 'SELECT * FROM Categories ORDER BY CategoryID DESC';
+                            $categories = Database::GetData($sql);
+                            foreach ($categories as $cate) {
+                                echo '<li><a href="' . ROOT_URL . '/category-book.php?CategoryID=' . $cate['CategoryID'] . '">' . $cate['CategoryName'] . '</a></li>';
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>

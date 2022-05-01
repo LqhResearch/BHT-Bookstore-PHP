@@ -80,7 +80,7 @@
                 <p><b>Phí vận chuyển:</b> 0 đ</p>
                 <p><b>Tổng tiền:</b> <?=number_format($order['TotalRevenue'])?> đ</p>
                 <?php if ($order['Status'] == 1) {?>
-                <img style="height: 120px" src="<?=ROOT_URL . '/assets/img/paid-logo.jpg'?>" alt="">
+                <img style="height: 150px;" src="<?=ROOT_URL . '/assets/img/paid-logo.jpg'?>" alt="">
                 <?php }?>
             </div>
         </div>

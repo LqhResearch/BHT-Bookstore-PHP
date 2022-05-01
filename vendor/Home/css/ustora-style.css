@@ -246,7 +246,7 @@ body {
 
 .block-slider img {
     width: 100%;
-    height: auto;
+    height: 500px;
 }
 
 .block-slider .bx-prev {

@@ -23,6 +23,43 @@
     <link rel="stylesheet" href="<?=HOME_TEMPLATE_URL?>/css/owl.carousel.css">
     <link rel="stylesheet" href="<?=HOME_TEMPLATE_URL?>/css/ustora-style.css">
     <link rel="stylesheet" href="<?=HOME_TEMPLATE_URL?>/css/responsive.css">
+
+    <style>
+    .form-search {
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-search input,
+    .form-search .btn {
+        font-size: inherit;
+        font-family: inherit;
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .form-search input {
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        outline: none;
+    }
+
+    .form-search .btn {
+        background-color: #428bca;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 0;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .form-search .btn:hover {
+        opacity: 0.7;
+    }
+    </style>
 </head>
 
 <body>
@@ -33,7 +70,7 @@
                     <?php if (isset($_SESSION['Role']) && $_SESSION['Role'] == '1') {?>
                     <li><a href="<?=ROOT_URL?>/admin/dashboard/index.php"><i class="fas fa-user-shield"></i> Trang quản trị</a></li>
                     <?php }if (isset($_SESSION['Role'])) {?>
-                    <li><a href="<?=ROOT_URL?>/logout.php"><i class="fas fa-user"></i> <?=$_SESSION['DisplayName']?></a></li>
+                    <li><a href="<?=ROOT_URL?>/profile.php"><i class="fas fa-user"></i> <?=$_SESSION['DisplayName']?></a></li>
                     <li><a href="<?=ROOT_URL?>/logout.php"><i class="fas fa-sign-in-alt"></i> Đăng xuất</a></li>
                     <?php } else {?>
                     <li><a href="<?=ROOT_URL?>/sign.php"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
@@ -47,11 +84,16 @@
     <div class="site-branding-area">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <div class="logo">
                         <h1><a href="./"><img src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" style="height: 60px"></a></h1>
                     </div>
                 </div>
+
+                <form class="col-sm-6 form-search" action="shop.php">
+                    <input name="keyword" placeholder="Từ khoá">
+                    <button class="btn"><i class="glyphicon glyphicon-search"></i></button>
+                </form>
 
                 <?php
                     $totalMoney = 0;
@@ -63,7 +105,7 @@
                         $countItem = Database::GetData($sql, ['row' => 0, 'cell' => 0]);
                     }
                 ?>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <div class="shopping-item">
                         <a href="<?=ROOT_URL . '/cart.php'?>">Giỏ hàng - <span class="cart-amunt"><?=number_format($totalMoney)?> đ</span>
                             <i class="fa fa-shopping-cart"></i>

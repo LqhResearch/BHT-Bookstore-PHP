@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <?php
-                $sql = 'SELECT * FROM Books ORDER BY UpdatedAt';
+                $keyword = isset($_GET['keyword']) ? "WHERE BookTitle LIKE '%" . $_GET['keyword'] . "%'" : '';
+                $sql = "SELECT * FROM Books $keyword ORDER BY UpdatedAt";
                 $books = Database::GetData($sql);
                 foreach ($books as $book) {
                 ?>
