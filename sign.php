@@ -26,11 +26,11 @@
                 $user = $users[0];
                 $_SESSION['Username'] = $user['Username'];
                 $_SESSION['DisplayName'] = $user['Fullname'] == '' ? $user['Username'] : $user['Fullname'];
-                $_SESSION['Avatar'] = $user['Avatar'];
+                $_SESSION['Avatar'] = !empty($user['Avatar']) ? $user['Avatar'] : '/assets/img/user.png';
                 $_SESSION['Role'] = $user['AccountTypeID'];
                 header('Location: admin/index.php');
             } else {
-                $message = "<p style='color: red'>Tên đăng nhập hoặc mật khẩu không hợp lệ!</p>";
+                $message = "<p style='color: #dc3545'>Tên đăng nhập hoặc mật khẩu không hợp lệ!</p>";
             }
         }
 
@@ -45,12 +45,12 @@
                 $sql = "INSERT INTO Users VALUES ('$username', sha1('$password1'), '', '', '$email', '', 0, 1, NOW(3), 3)";
                 $check = Database::NonQuery($sql);
                 if ($check) {
-                    $message = "<p style='color: blue'>Đăng ký thành công</p>";
+                    $message = "<p style='color: #0d6efd'>Đăng ký thành công</p>";
                 } else {
-                    $message = "<p style='color: red'>Đăng ký thất bại</p>";
+                    $message = "<p style='color: #dc3545'>Đăng ký thất bại</p>";
                 }
             } else {
-                $message = "<p style='color: red'>Mật khẩu không khớp!</p>";
+                $message = "<p style='color: #dc3545'>Mật khẩu không khớp!</p>";
             }
         }
     }

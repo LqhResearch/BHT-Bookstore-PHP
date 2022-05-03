@@ -122,7 +122,11 @@
                                         <input type="text" placeholder="Mã khuyến mãi" value="" id="coupon_code" class="input-text" name="coupon_code">
                                         <input type="submit" value="Kiểm tra mã" name="apply_coupon" class="button">
                                     </div>
-                                    <a href="?type=payment" class="btn btn-lg btn-success">Tạo đơn hàng</a>
+                                    <?php
+                                        if (isset($_SESSION['Username'])) {
+                                            echo '<a href="?type=payment" class="btn btn-lg btn-success">Tạo đơn hàng</a>';
+                                        }
+                                    ?>
                                 </td>
                             </tr>
                         </tbody>

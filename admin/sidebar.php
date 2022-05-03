@@ -81,12 +81,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?=ADMIN_URL?>/vouchers/list.php" class="nav-link">
-                    <i class="nav-icon fas fa-ticket-alt"></i>
-                    <p>Khuyến mãi</p>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="<?=ROOT_URL?>" class="nav-link">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>Trang mua hàng</p>

@@ -967,9 +967,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Username`, `Password`, `Fullname`, `Phone`, `Email`, `Avatar`, `Money`, `Status`, `CreatedAt`, `AccountTypeID`) VALUES
-('Admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Quản trị viên', '0123456789', 'admin@gmail.com', '/assets/img/hacker.png', 0, 1, '2022-04-27 08:07:50.207', 1),
-('QH', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Quốc Hưng', '0987654321', 'qh@gmail.com', '', 0, 0, '2022-04-27 08:07:50.207', 2),
-('User1', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Người dùng mới', '0123456788', 'user1@gmail.com', '', 0, 1, '2022-04-29 09:07:08.000', 3);
+('Admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Lý Quốc Hưng', '0123456789', 'admin@gmail.com', '/assets/img/hacker.png', 0, 1, NOW(3), 1),
+('QH', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Quốc Hưng', '0987654321', 'qh@gmail.com', '', 0, 0, NOW(3), 2),
+('abc', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Nguyễn Văn A', '0123456788', 'user1@gmail.com', '', 0, 1, NOW(3), 3);
 
 -- --------------------------------------------------------
 

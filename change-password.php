@@ -19,7 +19,7 @@
         $pass_2 = (isset($_POST['pass-2'])) ? $_POST['pass-2'] : '';
         $email = (isset($_POST['email'])) ? $_POST['email'] : '';
 
-        if ($pass_1 == $pass_2) {
+        if ($pass_1 == $pass_2 && $pass_1 != '') {
             $sql = "SELECT * FROM Users WHERE Username = '" . $_SESSION['Username'] . "' AND Password = sha1('$re_pass')";
             if (count(Database::GetData($sql))) {
                 $sql = "UPDATE Users SET Password = sha1('$pass_1') WHERE Username = '" . $_SESSION['Username'] . "'";
@@ -37,6 +37,7 @@
 ?>
 
 <body class="profile__bg d-flex-center">
+    <img class="profile__avatar" src="<?=ROOT_URL . $_SESSION['Avatar']?>" alt="Avatar">
     <div class="profile__form">
         <div class="profile__form--header">
             <h3>Đổi mật khẩu</h3>
@@ -54,10 +55,12 @@
                 <b>Nhập lại mật khẩu mới: </b>
                 <input type="password" name="pass-2">
             </div>
-            <div class="profile__group">
-                <input class="btn" name="submit" type="submit" value="Đổi mật khẩu">
-                <a class="btn" href="<?=ROOT_URL . '/profile.php'?>">Thông tin cá nhân</a>
-                <a class="btn" href="<?=ROOT_URL . '/'?>">Trang chủ</a>
+            <div class="profile__group d-flex-center">
+                <div>
+                    <input class="btn" name="submit" type="submit" value="Đổi mật khẩu">
+                    <a class="btn" href="<?=ROOT_URL . '/profile.php'?>">Thông tin cá nhân</a>
+                    <a class="btn" href="<?=ROOT_URL . '/'?>">Trang chủ</a>
+                </div>
             </div>
         </form>
         <?php

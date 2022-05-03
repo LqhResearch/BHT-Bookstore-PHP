@@ -14,6 +14,15 @@
 
 <?php
     if (isset($_POST['submit'])) {
+        if (!empty($_FILES['avatar']['name'])) {
+            $image_size = $_FILES['avatar']['size'];
+            $image_path = '/uploads/' . $_FILES['avatar']['name'];
+            move_uploaded_file($_FILES['avatar']['tmp_name'], '.' . $image_path);
+
+            $sql = "UPDATE Users SET Avatar = '$image_path' WHERE Username = '" . $_SESSION['Username'] . "'";
+            Database::NonQuery($sql);
+        }
+
         $username = (isset($_POST['username'])) ? $_POST['username'] : '';
         $fullname = (isset($_POST['fullname'])) ? $_POST['fullname'] : '';
         $phone = (isset($_POST['phone'])) ? $_POST['phone'] : '';
@@ -32,11 +41,12 @@
 ?>
 
 <body class="profile__bg d-flex-center">
+    <img class="profile__avatar" src="<?=ROOT_URL . $_SESSION['Avatar']?>" alt="Avatar">
     <div class="profile__form">
         <div class="profile__form--header">
             <h3>Thông tin cá nhân</h3>
         </div>
-        <form class="profile__form--body" method="POST">
+        <form class="profile__form--body" method="POST" enctype="multipart/form-data">
             <div class="profile__group">
                 <b>Tên đăng nhập: </b>
                 <input type="text" name="username" value="<?=$user['Username']?>" disabled>
@@ -54,15 +64,21 @@
                 <input type="email" name="email" value="<?=$user['Email']?>">
             </div>
             <div class="profile__group">
-                <span><b>Ngày tạo:</b> <?=date_format(new DateTime($user['CreatedAt']), 'd-m-Y')?></span>
+                <b>Ảnh đại diện: </b>
+                <input type="file" name="avatar">
             </div>
             <div class="profile__group">
-                <span><b>Loại tài khoản:</b> <?=$user['AccountTypeName']?></span>
+                <span><b>Ngày tạo tài khoản: </b> <?=date_format(new DateTime($user['CreatedAt']), 'd-m-Y')?></span>
             </div>
             <div class="profile__group">
-                <input class="btn" name="submit" type="submit" value="Cập nhật">
-                <a class="btn" href="<?=ROOT_URL . '/change-password.php'?>">Đổi mật khẩu</a>
-                <a class="btn" href="<?=ROOT_URL . '/'?>">Trang chủ</a>
+                <span><b>Loại tài khoản: </b> <?=$user['AccountTypeName']?></span>
+            </div>
+            <div class="profile__group d-flex-center">
+                <div>
+                    <input class="btn" name="submit" type="submit" value="Cập nhật">
+                    <a class="btn" href="<?=ROOT_URL . '/change-password.php'?>">Đổi mật khẩu</a>
+                    <a class="btn" href="<?=ROOT_URL . '/'?>">Trang chủ</a>
+                </div>
             </div>
         </form>
         <?php
