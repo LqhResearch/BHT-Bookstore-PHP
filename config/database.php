@@ -1,7 +1,7 @@
 <?php
 class Database
 {
-    private const HOST = 'mysql://b8702d966e4b06:0f9bc8a8@us-cdbr-east-06.cleardb.net/heroku_4ecc7f38dd55242?reconnect=true';
+    private const HOST = 'us-cdbr-east-06.cleardb.net';
     private const USERNAME = 'b8702d966e4b06';
     private const PASSWORD = '0f9bc8a8';
     private const DBNAME = 'heroku_4ecc7f38dd55242';
