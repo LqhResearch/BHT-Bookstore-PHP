@@ -1,10 +1,10 @@
 <?php
 class Database
 {
-    private const HOST = 'us-cdbr-east-06.cleardb.net';
-    private const USERNAME = 'b8702d966e4b06';
-    private const PASSWORD = '0f9bc8a8';
-    private const DBNAME = 'heroku_4ecc7f38dd55242';
+    private const HOST = 'sql6.freemysqlhosting.net';
+    private const USERNAME = 'sql6507376';
+    private const PASSWORD = 'bLCDqAXQyp';
+    private const DBNAME = 'sql6507376';
 
     /**
      * Tạo kết nối với CSDL
