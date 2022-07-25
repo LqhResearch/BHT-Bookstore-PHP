@@ -1,5 +1,15 @@
 {
-  "require": {
-    "silex/silex": "~1.1",
-  }
+    "name": "3d-lab/bht-bookstore-php",
+    "autoload": {
+        "psr-4": {
+            "3dLab\\BhtBookstorePhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "LQH",
+            "email": "lqhresearch@gmail.com"
+        }
+    ],
+    "require": {}
 }
