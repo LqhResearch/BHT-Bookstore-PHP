@@ -1,5 +1,5 @@
 <?php include '../../config/config.php'?>
-<?php include '../../config/Database.php'?>
+<?php include '../../config/database.php'?>
 <?php include '../../config/Pagination.php'?>
 
 <?php
