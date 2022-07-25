@@ -25,7 +25,7 @@
     $sql = "SELECT * FROM orders, users WHERE orders.Username = users.Username AND OrderID = '$orderID'";
     $user = Database::GetData($sql, ['row' => 0]);
 
-    $sql = "SELECT * FROM Order_Details, Books WHERE Books.ISBN = Order_Details.ISBN AND OrderID = '$orderID'";
+    $sql = "SELECT * FROM order_details, books WHERE books.ISBN = order_details.ISBN AND orderID = '$orderID'";
     $books = Database::GetData($sql);
 
     $sql = "SELECT * FROM orders WHERE OrderID = '$orderID'";
