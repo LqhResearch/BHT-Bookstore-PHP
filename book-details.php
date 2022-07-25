@@ -2,7 +2,7 @@
 
 <?php
     $isbn = isset($_GET['id']) ? $_GET['id'] : '';
-    $sql = "SELECT * FROM Books, Languages, Categories, Publishes WHERE Books.LanguageID = Languages.LanguageID AND Books.CategoryID = Categories.CategoryID AND Books.PublishID = Publishes.PublishID AND ISBN = '$isbn'";
+    $sql = "SELECT * FROM books, languages, categories, publishes WHERE books.LanguageID = languages.LanguageID AND books.CategoryID = categories.CategoryID AND books.PublishID = publishes.PublishID AND ISBN = '$isbn'";
     $book = Database::GetData($sql, ['row' => 0]);
 ?>
 

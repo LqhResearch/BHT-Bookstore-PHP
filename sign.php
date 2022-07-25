@@ -19,7 +19,7 @@
             $username = isset($_POST['username']) ? $_POST['username'] : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-            $sql = "SELECT * FROM Users WHERE (Username = '$username' OR Phone = '$username' OR Email = '$username') AND Password = sha1('$password') AND Status = 1";
+            $sql = "SELECT * FROM users WHERE (Username = '$username' OR Phone = '$username' OR Email = '$username') AND Password = sha1('$password') AND Status = 1";
             $users = Database::GetData($sql);
             if ($users != null) {
                 session_start();
@@ -42,7 +42,7 @@
             $email = isset($_POST['email']) ? $_POST['email'] : '';
 
             if ($password1 == $password2) {
-                $sql = "INSERT INTO Users VALUES ('$username', sha1('$password1'), '', '', '$email', '', 0, 1, NOW(3), 3)";
+                $sql = "INSERT INTO users VALUES ('$username', sha1('$password1'), '', '', '$email', '', 0, 1, NOW(3), 3)";
                 $check = Database::NonQuery($sql);
                 if ($check) {
                     $message = "<p style='color: #0d6efd'>Đăng ký thành công</p>";

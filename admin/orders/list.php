@@ -3,7 +3,7 @@
 <?php
     if (isset($_GET['payment'])) {
         $orderID = $_GET['payment'];
-        $sql = "UPDATE Orders SET Status = 1 WHERE OrderID = '$orderID'";
+        $sql = "UPDATE orders SET Status = 1 WHERE OrderID = '$orderID'";
         Database::NonQuery($sql);
     }
 ?>
@@ -71,14 +71,14 @@
                                     include '../services/Helper.php';
 
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Orders', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('orders', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "WHERE OrderID LIKE '%$keyword%' OR Username LIKE '%$keyword%'";
                                     }
 
-                                    $sql = "SELECT * FROM Orders $keyword ORDER BY CreatedAt DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM orders $keyword ORDER BY CreatedAt DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $ordes = Database::GetData($sql);
 
                                     if ($ordes) {

@@ -3,7 +3,7 @@
 <?php
     // Thêm sản phẩm vào giỏ hàng
     if (isset($_GET['id'])) {
-        $sql = "INSERT INTO Carts VALUES ('" . $_GET['id'] . "', '" . $_SESSION['Username'] . "', 1, NOW(3))";
+        $sql = "INSERT INTO carts VALUES ('" . $_GET['id'] . "', '" . $_SESSION['Username'] . "', 1, NOW(3))";
         Database::NonQuery($sql);
     }
 
@@ -12,7 +12,7 @@
         $isbn = isset($_POST['isbn']) ? $_POST['isbn'] : '';
         $amount = isset($_POST['amount']) ? $_POST['amount'] : '';
 
-        $sql = "UPDATE Carts SET Amount = $amount WHERE ISBN = '$isbn' AND Username = '" . $_SESSION['Username'] . "'";
+        $sql = "UPDATE carts SET Amount = $amount WHERE ISBN = '$isbn' AND Username = '" . $_SESSION['Username'] . "'";
         Database::NonQuery($sql);
     }
 
@@ -20,7 +20,7 @@
     if (isset($_GET['del-cart-id'])) {
         $isbn = $_GET['del-cart-id'];
 
-        $sql = "DELETE FROM Carts WHERE ISBN = '$isbn' AND Username = '" . $_SESSION['Username'] . "'";
+        $sql = "DELETE FROM carts WHERE ISBN = '$isbn' AND Username = '" . $_SESSION['Username'] . "'";
         Database::NonQuery($sql);
     }
 
@@ -35,23 +35,23 @@
 
     // Tạo đơn hàng
     if (isset($_GET['type']) && $_GET['type'] == 'payment') {
-        $sql = "SELECT * FROM Carts WHERE Username = '" . $_SESSION['Username'] . "'";
+        $sql = "SELECT * FROM carts WHERE Username = '" . $_SESSION['Username'] . "'";
         $carts = Database::GetData($sql);
 
         if ($carts) {
             $orderID = CreateOrderID();
-            $sql = "SELECT SUM(Amount * Price) FROM Carts, Books WHERE Carts.ISBN = Books.ISBN AND Username = '" . $_SESSION['Username'] . "'";
+            $sql = "SELECT SUM(Amount * Price) FROM carts, books WHERE carts.ISBN = books.ISBN AND Username = '" . $_SESSION['Username'] . "'";
             $totalMoney = Database::GetData($sql, ['row' => 0, 'cell' => 0]);
 
-            $sql = "INSERT INTO Orders VALUES ('$orderID', $totalMoney, $totalMoney, 0, NULL, NOW(3), '" . $_SESSION['Username'] . "')";
+            $sql = "INSERT INTO orders VALUES ('$orderID', $totalMoney, $totalMoney, 0, NULL, NOW(3), '" . $_SESSION['Username'] . "')";
             Database::NonQuery($sql);
 
             foreach ($carts as $cart) {
-                $sql = "INSERT INTO Order_Details VALUES (null, '" . $cart['ISBN'] . "', '$orderID', " . $cart['Amount'] . ')';
+                $sql = "INSERT INTO order_details VALUES (null, '" . $cart['ISBN'] . "', '$orderID', " . $cart['Amount'] . ')';
                 Database::NonQuery($sql);
             }
 
-            $sql = "DELETE FROM Carts WHERE Username = '" . $_SESSION['Username'] . "'";
+            $sql = "DELETE FROM carts WHERE Username = '" . $_SESSION['Username'] . "'";
             Database::NonQuery($sql);
         }
     }
@@ -89,7 +89,7 @@
                         <tbody>
                             <?php
                                 if (isset($_SESSION['Username'])) {
-                                    $sql = "SELECT * FROM Carts, Books WHERE Books.ISBN = Carts.ISBN AND Username = '" . $_SESSION['Username'] . "' ORDER BY Carts.UpdatedAt DESC";
+                                    $sql = "SELECT * FROM carts, books WHERE books.ISBN = carts.ISBN AND Username = '" . $_SESSION['Username'] . "' ORDER BY carts.UpdatedAt DESC";
                                     $carts = Database::GetData($sql);
 
                                     if ($carts) {
@@ -139,7 +139,7 @@
                         <?php
                             $totalMoney = 0;
                             if (isset($_SESSION['Username'])) {
-                                $sql = "SELECT SUM(Amount * Price) FROM Carts, Books WHERE Carts.ISBN = Books.ISBN AND Username = '" . $_SESSION['Username'] . "'";
+                                $sql = "SELECT SUM(Amount * Price) FROM carts, books WHERE carts.ISBN = books.ISBN AND Username = '" . $_SESSION['Username'] . "'";
                                 $totalMoney = Database::GetData($sql, ['row' => 0, 'cell' => 0]);
                             }
                         ?>

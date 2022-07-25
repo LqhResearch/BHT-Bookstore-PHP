@@ -8,7 +8,7 @@
             $note = isset($_POST['note']) ? $_POST['note'] : '';
 
             if (!empty($name)) {
-                $sql = "INSERT INTO Authors VALUES (null, '$name', '$note')";
+                $sql = "INSERT INTO authors VALUES (null, '$name', '$note')";
                 if (Database::NonQuery($sql)) {
                     $message = [
                         'type' => 'success',
@@ -30,7 +30,7 @@
             $note = isset($_POST['note']) ? $_POST['note'] : '';
 
             if (!empty($name)) {
-                $sql = "UPDATE Authors SET AuthorName = '$name', Note = '$note' WHERE AuthorID = $id";
+                $sql = "UPDATE authors SET AuthorName = '$name', Note = '$note' WHERE AuthorID = $id";
 
                 if (Database::NonQuery($sql)) {
                     $message = [
@@ -50,7 +50,7 @@
     // Delete items
     if (isset($_GET['del-id'])) {
         $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Authors WHERE AuthorID = $id";
+        $sql = "DELETE FROM authors WHERE AuthorID = $id";
 
         if (Database::NonQuery($sql)) {
             $message = [
@@ -124,7 +124,7 @@
             $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
             $auth = [];
             if ($id != '') {
-                $sql = "SELECT * FROM Authors WHERE AuthorID = $id";
+                $sql = "SELECT * FROM authors WHERE AuthorID = $id";
                 $auth = Database::GetData($sql, ['row' => 0]);
             }
         ?>
@@ -189,14 +189,14 @@
                             <tbody>
                                 <?php
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Authors', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('authors', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "WHERE AuthorName LIKE '%$keyword%' OR Note LIKE '%$keyword%'";
                                     }
 
-                                    $sql = "SELECT * FROM Authors $keyword ORDER BY AuthorID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM authors $keyword ORDER BY AuthorID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $authors = Database::GetData($sql);
 
                                     if ($authors) {

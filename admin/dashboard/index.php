@@ -57,7 +57,7 @@
     <!-- /.content -->
 
     <?php
-        $sql = 'SELECT MONTH(CreatedAt) AS Month, COUNT(*) AS Number, SUM(TotalRevenue) AS Money FROM Orders GROUP BY MONTH(CreatedAt)';
+        $sql = 'SELECT MONTH(CreatedAt) AS Month, COUNT(*) AS Number, SUM(TotalRevenue) AS Money FROM orders GROUP BY MONTH(CreatedAt)';
         $datas = Database::GetData($sql);
         $ordersOfYearValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $moneyOfYearValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];

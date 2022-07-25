@@ -99,9 +99,9 @@
                     $totalMoney = 0;
                     $countItem = 0;
                     if (isset($_SESSION['Username'])) {
-                        $sql = "SELECT SUM(Amount * Price) FROM Carts, Books WHERE Carts.ISBN = Books.ISBN AND Username = '" . $_SESSION['Username'] . "'";
+                        $sql = "SELECT SUM(Amount * Price) FROM carts, books WHERE carts.ISBN = books.ISBN AND Username = '" . $_SESSION['Username'] . "'";
                         $totalMoney = Database::GetData($sql, ['row' => 0, 'cell' => 0]);
-                        $sql = "SELECT count(*) FROM Carts WHERE Username = '" . $_SESSION['Username'] . "'";
+                        $sql = "SELECT count(*) FROM carts WHERE Username = '" . $_SESSION['Username'] . "'";
                         $countItem = Database::GetData($sql, ['row' => 0, 'cell' => 0]);
                     }
                 ?>

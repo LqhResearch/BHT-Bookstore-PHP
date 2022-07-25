@@ -10,7 +10,7 @@
             $fax = isset($_POST['fax']) ? $_POST['fax'] : '';
 
             if (!empty($name) && !empty($phone)) {
-                $sql = "INSERT INTO Suppliers VALUES (null, '$name', '$phone', '$address', '$fax')";
+                $sql = "INSERT INTO suppliers VALUES (null, '$name', '$phone', '$address', '$fax')";
                 if (Database::NonQuery($sql)) {
                     $message = [
                         'type' => 'success',
@@ -41,7 +41,7 @@
             $fax = isset($_POST['fax']) ? $_POST['fax'] : '';
 
             if (!empty($name) && !empty($phone)) {
-                $sql = "UPDATE Suppliers SET SupplierName = '$name', Phone = '$phone', Address = '$address', Fax = '$fax' WHERE SupplierID = $id";
+                $sql = "UPDATE suppliers SET SupplierName = '$name', Phone = '$phone', Address = '$address', Fax = '$fax' WHERE SupplierID = $id";
 
                 if (Database::NonQuery($sql)) {
                     $message = [
@@ -68,7 +68,7 @@
     // Delete items
     if (isset($_GET['del-id'])) {
         $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Suppliers WHERE SupplierID = $id";
+        $sql = "DELETE FROM suppliers WHERE SupplierID = $id";
 
         if (Database::NonQuery($sql)) {
             $message = [
@@ -150,7 +150,7 @@
             $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
             $sup = [];
             if ($id != '') {
-                $sql = "SELECT * FROM Suppliers WHERE SupplierID = $id";
+                $sql = "SELECT * FROM suppliers WHERE SupplierID = $id";
                 $sup = Database::GetData($sql, ['row' => 0]);
             }
         ?>
@@ -225,14 +225,14 @@
                             <tbody>
                                 <?php
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Suppliers', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('suppliers', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "WHERE SupplierName LIKE '%$keyword%'";
                                     }
 
-                                    $sql = "SELECT * FROM Suppliers $keyword ORDER BY SupplierID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM suppliers $keyword ORDER BY SupplierID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $suppliers = Database::GetData($sql);
 
                                     if ($suppliers) {

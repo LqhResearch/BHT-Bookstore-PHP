@@ -10,7 +10,7 @@
             $fax = isset($_POST['fax']) ? $_POST['fax'] : '';
 
             if (!empty($name) && !empty($phone)) {
-                $sql = "INSERT INTO Publishes VALUES (null, '$name', '$phone', '$address', '$fax')";
+                $sql = "INSERT INTO publishes VALUES (null, '$name', '$phone', '$address', '$fax')";
                 if (Database::NonQuery($sql)) {
                     $message = [
                         'type' => 'success',
@@ -41,7 +41,7 @@
             $fax = isset($_POST['fax']) ? $_POST['fax'] : '';
 
             if (!empty($name) && !empty($phone)) {
-                $sql = "UPDATE Publishes SET PublishName = '$name', Phone = '$phone', Address = '$address', Fax = '$fax' WHERE PublishID = $id";
+                $sql = "UPDATE publishes SET PublishName = '$name', Phone = '$phone', Address = '$address', Fax = '$fax' WHERE PublishID = $id";
 
                 if (Database::NonQuery($sql)) {
                     $message = [
@@ -68,7 +68,7 @@
     // Delete items
     if (isset($_GET['del-id'])) {
         $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Publishes WHERE PublishID = $id";
+        $sql = "DELETE FROM publishes WHERE PublishID = $id";
 
         if (Database::NonQuery($sql)) {
             $message = [
@@ -150,7 +150,7 @@
             $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
             $pub = [];
             if ($id != '') {
-                $sql = "SELECT * FROM Publishes WHERE PublishID = $id";
+                $sql = "SELECT * FROM publishes WHERE PublishID = $id";
                 $pub = Database::GetData($sql, ['row' => 0]);
             }
         ?>
@@ -225,14 +225,14 @@
                             <tbody>
                                 <?php
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Publishes', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('publishes', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "WHERE PublishName LIKE '%$keyword%'";
                                     }
 
-                                    $sql = "SELECT * FROM Publishes $keyword ORDER BY PublishID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM publishes $keyword ORDER BY PublishID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $publishes = Database::GetData($sql);
 
                                     if ($publishes) {

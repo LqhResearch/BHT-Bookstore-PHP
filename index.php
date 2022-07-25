@@ -4,7 +4,7 @@
     <div class="block-slider block-slider4">
         <ul class="" id="bxslider-home4">
             <?php
-                $sql = 'SELECT * FROM Sliders WHERE Status = 1';
+                $sql = 'SELECT * FROM sliders WHERE Status = 1';
                 $sliders = Database::GetData($sql);
                 if ($sliders) {
                     foreach ($sliders as $slider) {
@@ -64,7 +64,7 @@
                     <h2 class="section-title">Sản phẩm mới nhất</h2>
                     <div class="product-carousel">
                         <?php
-                            $sql = 'SELECT * FROM Books ORDER BY UpdatedAt LIMIT 5';
+                            $sql = 'SELECT * FROM books ORDER BY UpdatedAt LIMIT 5';
                             $books = Database::GetData($sql);
                             foreach ($books as $book) {
                             ?>

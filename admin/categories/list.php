@@ -7,7 +7,7 @@
             $name = isset($_POST['name']) ? $_POST['name'] : '';
 
             if (!empty($name)) {
-                $sql = "INSERT INTO Categories VALUES (null, '$name')";
+                $sql = "INSERT INTO categories VALUES (null, '$name')";
                 if (Database::NonQuery($sql)) {
                     $message = [
                         'type' => 'success',
@@ -28,7 +28,7 @@
             $name = isset($_POST['name']) ? $_POST['name'] : '';
 
             if (!empty($name)) {
-                $sql = "UPDATE Categories SET CategoryName = '$name' WHERE CategoryID = $id";
+                $sql = "UPDATE categories SET CategoryName = '$name' WHERE CategoryID = $id";
 
                 if (Database::NonQuery($sql)) {
                     $message = [
@@ -48,7 +48,7 @@
     // Delete items
     if (isset($_GET['del-id'])) {
         $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Categories WHERE CategoryID = $id";
+        $sql = "DELETE FROM categories WHERE CategoryID = $id";
 
         if (Database::NonQuery($sql)) {
             $message = [
@@ -118,7 +118,7 @@
             $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
             $cate = [];
             if ($id != '') {
-                $sql = "SELECT * FROM Categories WHERE CategoryID = $id";
+                $sql = "SELECT * FROM categories WHERE CategoryID = $id";
                 $cate = Database::GetData($sql, ['row' => 0]);
             }
         ?>
@@ -178,14 +178,14 @@
                             <tbody>
                                 <?php
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Categories', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('categories', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "WHERE CategoryName LIKE '%$keyword%'";
                                     }
 
-                                    $sql = "SELECT * FROM Categories $keyword ORDER BY CategoryID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM categories $keyword ORDER BY CategoryID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $categories = Database::GetData($sql);
 
                                     if ($categories) {
