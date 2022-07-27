@@ -398,7 +398,7 @@
                                     <th>Hình ảnh</th>
                                     <th>Ngôn ngữ</th>
                                     <th>Giá</th>
-                                    <th>Danh mục</th>
+                                    <th>Thể loại</th>
                                     <th width="160">Công cụ</th>
                                 </tr>
                             </thead>

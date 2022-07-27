@@ -2,9 +2,9 @@
 class Database
 {
     private const HOST = 'sql6.freemysqlhosting.net';
-    private const USERNAME = 'sql6507376';
-    private const PASSWORD = 'bLCDqAXQyp';
-    private const DBNAME = 'sql6507376';
+    private const USERNAME = 'sql6509077';
+    private const PASSWORD = 'AexUuakPPN';
+    private const DBNAME = 'sql6509077';
 
     /**
      * Tạo kết nối với CSDL
