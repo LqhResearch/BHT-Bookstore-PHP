@@ -1,5 +1,5 @@
 <?php include '../../config/config.php'?>
-<?php include '../../config/Database.php'?>
+<?php include '../../config/database.php'?>
 <?php include '../../config/Pagination.php'?>
 
 <?php
@@ -46,9 +46,9 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
+        <!-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="Logo" height="217" width="699">
-        </div>
+        </div> -->
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">

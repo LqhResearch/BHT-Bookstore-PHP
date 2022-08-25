@@ -17,7 +17,7 @@
             $status = isset($_POST['status']) ? $_POST['status'] : '';
 
             if (!empty($name)) {
-                $sql = "INSERT INTO Sliders VALUES (null, '$name', '$description', '$image_path', $status)";
+                $sql = "INSERT INTO sliders VALUES (null, '$name', '$description', '$image_path', $status)";
                 if (Database::NonQuery($sql)) {
                     $message = [
                         'type' => 'success',
@@ -42,7 +42,7 @@
 
             if (!empty($name)) {
                 $thumbnail_sql = $image_path != '/uploads/' ? "Thumbnail = '$image_path', " : '';
-                $sql = "UPDATE Sliders SET SliderName = '$name', Description = '$description', $thumbnail_sql Status = $status WHERE SliderID = $id";
+                $sql = "UPDATE sliders SET SliderName = '$name', Description = '$description', $thumbnail_sql Status = $status WHERE SliderID = $id";
                 if (Database::NonQuery($sql)) {
                     $message = [
                         'type' => 'success',
@@ -61,7 +61,7 @@
     // Delete items
     if (isset($_GET['del-id'])) {
         $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Sliders WHERE SliderID = $id";
+        $sql = "DELETE FROM sliders WHERE SliderID = $id";
 
         if (Database::NonQuery($sql)) {
             $message = [
@@ -146,7 +146,7 @@
             $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
             $slider = [];
             if ($id != '') {
-                $sql = "SELECT * FROM Sliders WHERE SliderID = $id";
+                $sql = "SELECT * FROM sliders WHERE SliderID = $id";
                 $slider = Database::GetData($sql, ['row' => 0]);
             }
         ?>
@@ -226,14 +226,14 @@
                                     include '../services/Helper.php';
 
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Sliders', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('sliders', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "WHERE SliderName LIKE '%$keyword%'";
                                     }
 
-                                    $sql = "SELECT * FROM Sliders $keyword ORDER BY SliderID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM sliders $keyword ORDER BY SliderID DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $sliders = Database::GetData($sql);
 
                                     if ($sliders) {

@@ -21,7 +21,7 @@
                     <h2 class="footer-wid-title">Danh mục</h2>
                     <ul>
                         <?php
-                            $sql = 'SELECT * FROM Categories ORDER BY CategoryID DESC';
+                            $sql = 'SELECT * FROM categories ORDER BY CategoryID DESC';
                             $categories = Database::GetData($sql);
                             foreach ($categories as $cate) {
                                 echo '<li><a href="' . ROOT_URL . '/category-book.php?CategoryID=' . $cate['CategoryID'] . '">' . $cate['CategoryName'] . '</a></li>';

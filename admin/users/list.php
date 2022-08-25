@@ -8,7 +8,7 @@
             $status = isset($_POST['status']) ? $_POST['status'] : '';
             $accountType = isset($_POST['accountType']) ? $_POST['accountType'] : '';
 
-            $sql = "UPDATE Users SET Status = $status, AccountTypeID = $accountType WHERE Username = '$id'";
+            $sql = "UPDATE users SET Status = $status, AccountTypeID = $accountType WHERE Username = '$id'";
             if (Database::NonQuery($sql)) {
                 $message = [
                     'type' => 'success',
@@ -21,7 +21,7 @@
     // Delete items
     if (isset($_GET['del-id'])) {
         $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Users WHERE Username = '$id'";
+        $sql = "DELETE FROM users WHERE Username = '$id'";
 
         if (Database::NonQuery($sql)) {
             $message = [
@@ -67,7 +67,7 @@
             $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
             $user = [];
             if ($id != '') {
-                $sql = "SELECT * FROM Users WHERE Username = '$id'";
+                $sql = "SELECT * FROM users WHERE Username = '$id'";
                 $user = Database::GetData($sql, ['row' => 0]);
             }
         ?>
@@ -93,7 +93,7 @@
                             </select>
                         </div>
                         <?php
-                            $sql = 'SELECT * FROM Account_Types';
+                            $sql = 'SELECT * FROM account_types';
                             $accountTypes = Database::GetData($sql);
                         ?>
                         <div class="form-group">
@@ -149,14 +149,14 @@
                                     include '../services/Helper.php';
 
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Users', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('users', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "AND (Username LIKE '%$keyword%' OR Fullname LIKE '%$keyword%')";
                                     }
 
-                                    $sql = "SELECT * FROM Users, Account_Types WHERE Users.AccountTypeID = Account_Types.AccountTypeID $keyword LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM users, account_types WHERE users.AccountTypeID = account_types.AccountTypeID $keyword LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $users = Database::GetData($sql);
 
                                     if ($users) {

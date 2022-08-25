@@ -26,7 +26,7 @@
             $publish = isset($_POST['publish']) ? $_POST['publish'] : '';
 
             if (!empty($name)) {
-                $sql = "INSERT INTO Books VALUES ('$isbn', '$name', '$description', $publish_year, $weight, '$size_width x $size_height', $page, '$image_path', '$language', $price, 0, 0, $category, $publish, NOW(3))";
+                $sql = "INSERT INTO books VALUES ('$isbn', '$name', '$description', $publish_year, $weight, '$size_width x $size_height', $page, '$image_path', '$language', $price, 0, 0, $category, $publish, NOW(3))";
                 if (Database::NonQuery($sql)) {
                     $message = [
                         'type' => 'success',
@@ -58,7 +58,7 @@
 
             if (!empty($name)) {
                 $thumbnail_sql = $image_path != '/uploads/' ? "Thumbnail = '$image_path', " : '';
-                $sql = "UPDATE Books SET $thumbnail_sql BookTitle = '$name', Description = '$description', PublishYear = '$publish_year', Weight = '$weight', Size = '$size_width x $size_height', PageNumber = $page, LanguageID = '$language', Price = $price, CategoryID = $category, PublishID = $publish, UpdatedAt = NOW(3) WHERE ISBN = $id";
+                $sql = "UPDATE books SET $thumbnail_sql BookTitle = '$name', Description = '$description', PublishYear = '$publish_year', Weight = '$weight', Size = '$size_width x $size_height', PageNumber = $page, LanguageID = '$language', Price = $price, CategoryID = $category, PublishID = $publish, UpdatedAt = NOW(3) WHERE ISBN = $id";
 
                 if (Database::NonQuery($sql)) {
                     $message = [
@@ -78,7 +78,7 @@
     // Delete items
     if (isset($_GET['del-id'])) {
         $id = isset($_GET['del-id']) ? $_GET['del-id'] : '';
-        $sql = "DELETE FROM Books WHERE ISBN = $id";
+        $sql = "DELETE FROM books WHERE ISBN = $id";
 
         if (Database::NonQuery($sql)) {
             $message = [
@@ -91,7 +91,7 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="<?=ADMIN_URL?>/dasboard/" class="brand-link">
-        <img src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="BHT Bookstore" style="width: 100%">
+        <img src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="BHT bookstore" style="width: 100%">
     </a>
     <?php include '../sidebar.php'?>
 </aside>
@@ -187,7 +187,7 @@
                                 <label>Ngôn ngữ</label>
                                 <select class="form-control" name="language">
                                     <?php
-                                        $sql = 'SELECT * FROM Languages';
+                                        $sql = 'SELECT * FROM languages';
                                         $languages = Database::GetData($sql);
                                         if ($languages) {
                                             foreach ($languages as $lang) {
@@ -205,7 +205,7 @@
                                 <label>Thể loại</label>
                                 <select class="form-control" name="category">
                                     <?php
-                                        $sql = 'SELECT * FROM Categories';
+                                        $sql = 'SELECT * FROM categories';
                                         $categories = Database::GetData($sql);
                                         if ($categories) {
                                             foreach ($categories as $cate) {
@@ -219,7 +219,7 @@
                                 <label>Nhà xuất bản</label>
                                 <select class="form-control" name="publish">
                                     <?php
-                                        $sql = 'SELECT * FROM Publishes';
+                                        $sql = 'SELECT * FROM publishes';
                                         $publishes = Database::GetData($sql);
                                         if ($publishes) {
                                             foreach ($publishes as $pub) {
@@ -244,7 +244,7 @@
             $id = isset($_GET['edit-id']) ? $_GET['edit-id'] : '';
             $book = [];
             if ($id != '') {
-                $sql = "SELECT * FROM Books WHERE ISBN = $id";
+                $sql = "SELECT * FROM books WHERE ISBN = $id";
                 $book = Database::GetData($sql, ['row' => 0]);
             }
         ?>
@@ -317,7 +317,7 @@
                                 <label>Ngôn ngữ</label>
                                 <select class="form-control" name="language">
                                     <?php
-                                        $sql = 'SELECT * FROM Languages';
+                                        $sql = 'SELECT * FROM languages';
                                         $languages = Database::GetData($sql);
                                         if ($languages) {
                                             foreach ($languages as $lang) {
@@ -336,7 +336,7 @@
                                 <label>Thể loại</label>
                                 <select class="form-control" name="category">
                                     <?php
-                                        $sql = 'SELECT * FROM Categories';
+                                        $sql = 'SELECT * FROM categories';
                                         $categories = Database::GetData($sql);
                                         if ($categories) {
                                             foreach ($categories as $cate) {
@@ -351,7 +351,7 @@
                                 <label>Nhà xuất bản</label>
                                 <select class="form-control" name="publish">
                                     <?php
-                                        $sql = 'SELECT * FROM Publishes';
+                                        $sql = 'SELECT * FROM publishes';
                                         $publishes = Database::GetData($sql);
                                         if ($publishes) {
                                             foreach ($publishes as $pub) {
@@ -398,21 +398,21 @@
                                     <th>Hình ảnh</th>
                                     <th>Ngôn ngữ</th>
                                     <th>Giá</th>
-                                    <th>Danh mục</th>
+                                    <th>Thể loại</th>
                                     <th width="160">Công cụ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $pager = (new Pagination())->get('Books', $page, ROW_OF_PAGE);
+                                    $pager = (new Pagination())->get('books', $page, ROW_OF_PAGE);
 
                                     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                     if ($keyword) {
                                         $keyword = "AND BookTitle LIKE '%$keyword%'";
                                     }
 
-                                    $sql = "SELECT * FROM Books, Languages, Categories WHERE Books.LanguageID = Languages.LanguageID AND Books.CategoryID = Categories.CategoryID $keyword ORDER BY UpdatedAt DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
+                                    $sql = "SELECT * FROM books, languages, categories WHERE books.LanguageID = languages.LanguageID AND books.CategoryID = categories.CategoryID $keyword ORDER BY UpdatedAt DESC LIMIT " . $pager['StartIndex'] . ', ' . ROW_OF_PAGE;
                                     $books = Database::GetData($sql);
 
                                     if ($books) {

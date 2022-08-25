@@ -1,5 +1,5 @@
 <?php include '../../config/config.php'?>
-<?php include '../../config/Database.php'?>
+<?php include '../../config/database.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,13 +22,13 @@
 
 <?php
     $orderID = isset($_GET['order-id']) ? $_GET['order-id'] : '';
-    $sql = "SELECT * FROM Orders, Users WHERE Orders.Username = Users.Username AND OrderID = '$orderID'";
+    $sql = "SELECT * FROM orders, users WHERE orders.Username = users.Username AND OrderID = '$orderID'";
     $user = Database::GetData($sql, ['row' => 0]);
 
-    $sql = "SELECT * FROM Order_Details, Books WHERE Books.ISBN = Order_Details.ISBN AND OrderID = '$orderID'";
+    $sql = "SELECT * FROM order_details, books WHERE books.ISBN = order_details.ISBN AND orderID = '$orderID'";
     $books = Database::GetData($sql);
 
-    $sql = "SELECT * FROM Orders WHERE OrderID = '$orderID'";
+    $sql = "SELECT * FROM orders WHERE OrderID = '$orderID'";
     $order = Database::GetData($sql, ['row' => 0]);
 ?>
 

@@ -2,7 +2,7 @@
 <div class="single-product-area">
     <?php
         $categoryID = isset($_GET['CategoryID']) ? $_GET['CategoryID'] : 1;
-        $sql = "SELECT CategoryName FROM Categories WHERE CategoryID = $categoryID";
+        $sql = "SELECT CategoryName FROM categories WHERE CategoryID = $categoryID";
         $categoryName = Database::GetData($sql, ['row' => 0, 'cell' => 0]);
     ?>
     <div class="zigzag-bottom"></div>
@@ -10,7 +10,7 @@
         <h1 class="text-primary text-center"><?=$categoryName?></h1>
         <div class="row">
             <?php
-                $sql = "SELECT * FROM Books WHERE CategoryID = $categoryID ORDER BY UpdatedAt";
+                $sql = "SELECT * FROM books WHERE CategoryID = $categoryID ORDER BY UpdatedAt";
                 $books = Database::GetData($sql);
                 foreach ($books as $book) {
                 ?>
