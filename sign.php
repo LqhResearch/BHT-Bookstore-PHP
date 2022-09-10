@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/sign.css" />
     <title>Đăng ký và đăng nhập</title>
-    <link rel="icon" href="<?=ROOT_URL?>/assets/img/favicon.png" />
+    <link rel="icon" href="/assets/img/favicon.png" />
 </head>
 
 <?php
@@ -65,14 +65,14 @@
                     <h2 class="title">Đăng nhập</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input name="username" type="text" placeholder="Tài khoản / Mail / Điện thoại" required />
+                        <input name="username" type="text" placeholder="Tài khoản / Email / Điện thoại" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input name="password" type="password" placeholder="Mật khẩu" required />
                     </div>
                     <?=isset($message) ? $message : ''?>
-                    <input name="SignIn" type="submit" value="Login" class="btn solid" />
+                    <input name="SignIn" type="submit" value="Đăng nhập" class="btn solid" />
                 </form>
 
                 <form action="#" method="POST" class="sign-up-form">

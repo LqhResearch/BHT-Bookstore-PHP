@@ -79,12 +79,7 @@
     }
 ?>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="<?=ADMIN_URL?>/dasboard/" class="brand-link">
-        <img src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="BHT Bookstore" style="width: 100%">
-    </a>
-    <?php include '../sidebar.php'?>
-</aside>
+<?php include '../sidebar.php'?>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -241,7 +236,7 @@
                                                 <tr>
                                                     <th>' . $pub['PublishID'] . '</th>
                                                     <td>' . $pub['PublishName'] . '</td>
-                                                    <td>' . $pub['Phone'] . '</td>
+                                                    <td>' . Helper::Phone($pub['Phone']) . '</td>
                                                     <td>' . $pub['Address'] . '</td>
                                                     <td>' . $pub['Fax'] . '</td>
                                                     <td>

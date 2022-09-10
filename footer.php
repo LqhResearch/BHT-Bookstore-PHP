@@ -5,13 +5,12 @@
             <div class="col-md-4 col-sm-6">
                 <div class="footer-about-us">
                     <h2>BHT<span> Bookstore</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid
-                        eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <p>BHT Bookstore nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả Hệ thống BHT Bookstore trên toàn quốc.</p>
                     <div class="footer-social">
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>
@@ -24,7 +23,7 @@
                             $sql = 'SELECT * FROM categories ORDER BY CategoryID DESC';
                             $categories = Database::GetData($sql);
                             foreach ($categories as $cate) {
-                                echo '<li><a href="' . ROOT_URL . '/category-book.php?CategoryID=' . $cate['CategoryID'] . '">' . $cate['CategoryName'] . '</a></li>';
+                                echo '<li><a href="/category-book.php?CategoryID=' . $cate['CategoryID'] . '">' . $cate['CategoryName'] . '</a></li>';
                             }
                         ?>
                     </ul>

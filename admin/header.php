@@ -1,12 +1,13 @@
 <?php include '../../config/config.php'?>
 <?php include '../../config/database.php'?>
 <?php include '../../config/Pagination.php'?>
+<?php include '../../config/Helper.php'?>
 
 <?php
     // Kiểm tra xem có phải tài khoản quản trị viên không?
     session_start();
     if (!isset($_SESSION['Role']) || $_SESSION['Role'] != 1) {
-        header('Location: ' . ROOT_URL . '/index.php');
+        header('Location: /index.php');
     }
 ?>
 
@@ -17,7 +18,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BHT Bookstore</title>
-    <link rel="icon" href="<?=ROOT_URL?>/assets/img/favicon.png" />
+    <link rel="icon" href="/assets/img/favicon.png" />
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -40,16 +41,11 @@
     <!-- summernote -->
     <link rel="stylesheet" href="<?=ADMIN_TEMPLATE_URL?>/plugins/summernote/summernote-bs4.min.css">
     <!-- My style -->
-    <link rel="stylesheet" href="<?=ROOT_URL?>/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <!-- Preloader -->
-        <!-- <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="Logo" height="217" width="699">
-        </div> -->
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->

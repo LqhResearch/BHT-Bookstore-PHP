@@ -89,12 +89,7 @@
     }
 ?>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="<?=ADMIN_URL?>/dasboard/" class="brand-link">
-        <img src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="BHT bookstore" style="width: 100%">
-    </a>
-    <?php include '../sidebar.php'?>
-</aside>
+<?php include '../sidebar.php'?>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -421,12 +416,12 @@
                                                 <tr>
                                                     <th>' . $book['ISBN'] . '</th>
                                                     <td>' . $book['BookTitle'] . '</td>
-                                                    <td class="text-center"><img height="60" src="' . ROOT_URL . $book['Thumbnail'] . '" alt="" /></td>
+                                                    <td class="text-center"><img height="60" src="' . $book['Thumbnail'] . '" alt="" /></td>
                                                     <td>' . $book['LanguageName'] . '</td>
-                                                    <td>' . number_format($book['Price']) . '</td>
+                                                    <td>' . Helper::Currency($book['Price']) . '</td>
                                                     <td>' . $book['CategoryName'] . '</td>
                                                     <td>
-                                                        <a href="' . ROOT_URL . '/book-details.php?id=' . $book['ISBN'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                        <a href="' . '/book-details.php?id=' . $book['ISBN'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>
                                                         <a href="?edit-id=' . $book['ISBN'] . '"class="btn btn-warning"><i class="fas fa-marker"></i></a>
                                                         <a onclick="removeRow(' . $book['ISBN'] . ')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                     </td>

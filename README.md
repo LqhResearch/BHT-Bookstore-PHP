@@ -1,3 +1,4 @@
+
 # Website bán sách
 
 ## :pushpin: Ngôn ngữ
@@ -24,6 +25,10 @@
 - Xem thông tin chi tiết sách.
 - Giỏ hàng: thêm sách, cập nhật số lượng, xoá sách.
 - Tạo đơn hàng.
+
+## Chạy localhost
+
+> php -S localhost:8000
 
 ## :framed_picture: Hình ảnh
 - Đăng nhập

@@ -1,5 +1,6 @@
 <?php include '../../config/config.php'?>
 <?php include '../../config/database.php'?>
+<?php include '../../config/Helper.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@
     <div class="container">
         <div class="text-primary text-center pb-5">
             <h4><b>Cửa hàng bán sách trực tuyến BHT Bookstore</b></h4>
-            <img class="main-logo" src="<?=ROOT_URL . '/assets/img/bht_bookstore_logo.png'?>" alt="Image">
+            <img class="main-logo" src="<?='/assets/img/bht_bookstore_logo.png'?>" alt="Image">
         </div>
         <h3 class="text-primary text-center pb-5"><b>HOÁ ĐƠN</b></h3>
         <div class="pb-5">
@@ -64,9 +65,9 @@
                                 echo '<tr>
                                     <th>' . $book['ISBN'] . '</th>
                                     <td>' . $book['BookTitle'] . '</td>
-                                    <td>' . number_format($book['Price']) . 'đ</td>
+                                    <td>' . Helper::Currency($book['Price']) . '</td>
                                     <td>' . $book['Amount'] . '</td>
-                                    <td>' . number_format($book['Price'] * $book['Amount']) . 'đ</td>
+                                    <td>' . Helper::Currency($book['Price'] * $book['Amount']) . '</td>
                                 </tr>';
                             }
                         } else {
@@ -76,11 +77,11 @@
                 </tbody>
             </table>
             <div class="text-end">
-                <p><b>Tổng sản phẩm:</b> <?=number_format($order['TotalMoney'])?> đ</p>
-                <p><b>Phí vận chuyển:</b> 0 đ</p>
-                <p><b>Tổng tiền:</b> <?=number_format($order['TotalRevenue'])?> đ</p>
+                <p><b>Tổng sản phẩm:</b> <?=Helper::Currency($order['TotalMoney'])?></p>
+                <p><b>Phí vận chuyển:</b> 0 ₫</p>
+                <p><b>Tổng tiền:</b> <?=Helper::Currency($order['TotalRevenue'])?></p>
                 <?php if ($order['Status'] == 1) {?>
-                <img style="height: 150px;" src="<?=ROOT_URL . '/assets/img/paid-logo.jpg'?>" alt="">
+                <img style="height: 150px;" src="<?='/assets/img/paid-logo.jpg'?>">
                 <?php }?>
             </div>
         </div>

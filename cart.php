@@ -97,8 +97,8 @@
                             <tr class="cart_item">
                                 <td class="product-name"><?=$cart['ISBN']?></td>
                                 <td class="product-name"><?=$cart['BookTitle']?></td>
-                                <td class="product-thumbnail"><img class="shop_thumbnail" src="<?=ROOT_URL . $cart['Thumbnail']?>"></td>
-                                <td class="product-name"><?=number_format($cart['Price'])?> đ</td>
+                                <td class="product-thumbnail"><img class="shop_thumbnail" src="<?=$cart['Thumbnail']?>"></td>
+                                <td class="product-name"><?=Helper::Currency($cart['Price'])?></td>
                                 <td class="product-quantity">
                                     <div class="quantity buttons_added">
                                         <form method="POST">
@@ -108,7 +108,7 @@
                                         </form>
                                     </div>
                                 </td>
-                                <td class="product-name"><?=number_format($cart['Price'] * $cart['Amount'])?> đ</td>
+                                <td class="product-name"><?=Helper::Currency($cart['Price'] * $cart['Amount'])?></td>
                                 <td class="product-remove"><a title="Xoá sản phẩm" class="remove" href="?del-cart-id=<?=$cart['ISBN']?>">×</td>
                             </tr>
                             <?php }
@@ -151,7 +151,7 @@
                                 </tr>
                                 <tr class="shipping">
                                     <th>Vận chuyển: </th>
-                                    <td>Free Shipping</td>
+                                    <td>Miễn phí vận chuyển</td>
                                 </tr>
                                 <tr class="order-total">
                                     <th>Tổng tiền: </th>

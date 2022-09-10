@@ -8,12 +8,7 @@
     }
 ?>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="<?=ADMIN_URL?>/dasboard/" class="brand-link">
-        <img src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="BHT Bookstore" style="width: 100%">
-    </a>
-    <?php include '../sidebar.php'?>
-</aside>
+<?php include '../sidebar.php'?>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -68,8 +63,6 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    include '../services/Helper.php';
-
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                                     $pager = (new Pagination())->get('orders', $page, ROW_OF_PAGE);
 
@@ -87,11 +80,11 @@
                                             echo '
                                                 <tr>
                                                     <th>' . $order['OrderID'] . '</th>
-                                                    <td>' . number_format($order['TotalMoney']) . '</td>
-                                                    <td>' . number_format($order['TotalRevenue']) . '</td>
+                                                    <td>' . Helper::Currency($order['TotalMoney']) . '</td>
+                                                    <td>' . Helper::Currency($order['TotalRevenue']) . '</td>
                                                     <td>' . Helper::PaymentBadge($order['Status']) . '</td>
-                                                    <td>' . $order['PaymentDate'] . '</td>
-                                                    <td>' . $order['CreatedAt'] . '</td>
+                                                    <td>' . Helper::DateTime($order['PaymentDate']) . '</td>
+                                                    <td>' . Helper::DateTime($order['CreatedAt']) . '</td>
                                                     <td>' . $order['Username'] . '</td>
                                                     <td>
                                                         <a href="print-order.php?order-id=' . $order['OrderID'] . '"class="btn btn-info"><i class="fas fa-eye"></i></a>

@@ -11,8 +11,6 @@ $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="<?=ADMIN_TEMPLATE_URL?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Sparkline -->
-<script src="<?=ADMIN_TEMPLATE_URL?>/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
 <script src="<?=ADMIN_TEMPLATE_URL?>/plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="<?=ADMIN_TEMPLATE_URL?>/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -29,8 +27,6 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="<?=ADMIN_TEMPLATE_URL?>/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=ADMIN_TEMPLATE_URL?>/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?=ADMIN_TEMPLATE_URL?>/dist/js/pages/dashboard.js"></script>
 </body>
 
-</html>1
+</html>

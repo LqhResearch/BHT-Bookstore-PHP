@@ -9,7 +9,7 @@
                 if ($sliders) {
                     foreach ($sliders as $slider) {
                         echo '<li>
-                                <img src="' . ROOT_URL . $slider['Thumbnail'] . '" alt="Slide">
+                                <img src="' . $slider['Thumbnail'] . '" alt="Slide">
                                 <div class="caption-group">
                                     <h2 class="caption title">' . $slider['SliderName'] . '</h2>
                                     <h4 class="caption subtitle">' . $slider['Description'] . '</h4>
@@ -70,17 +70,17 @@
                             ?>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="<?=ROOT_URL . $book['Thumbnail']?>" alt="">
+                                <img src="<?=$book['Thumbnail']?>" alt="">
                                 <div class="product-hover">
                                     <?php if (isset($_SESSION['Role']) && $_SESSION['Role'] == 3) {?>
-                                    <a href="<?=ROOT_URL . '/cart.php?id=' . $book['ISBN']?>" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                    <a href="<?='/cart.php?id=' . $book['ISBN']?>" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
                                     <?php }?>
-                                    <a href="<?=ROOT_URL . '/book-details.php?id=' . $book['ISBN']?>" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                    <a href="<?='/book-details.php?id=' . $book['ISBN']?>" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
                                 </div>
                             </div>
-                            <h2><a href="<?=ROOT_URL . '/book-details.php?id=' . $book['ISBN']?>"><?=$book['BookTitle']?></a></h2>
+                            <h2><a href="<?='/book-details.php?id=' . $book['ISBN']?>"><?=$book['BookTitle']?></a></h2>
                             <div class="product-carousel-price">
-                                <ins><?=number_format($book['Price'])?> đ</ins>
+                                <ins><?=Helper::Currency($book['Price'])?></ins>
                             </div>
                         </div>
                         <?php }?>

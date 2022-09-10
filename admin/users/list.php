@@ -32,12 +32,7 @@
     }
 ?>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="<?=ADMIN_URL?>/dasboard/" class="brand-link">
-        <img src="<?=ROOT_URL?>/assets/img/bht_bookstore_logo.png" alt="BHT Bookstore" style="width: 100%">
-    </a>
-    <?php include '../sidebar.php'?>
-</aside>
+<?php include '../sidebar.php'?>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -146,8 +141,6 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    include '../services/Helper.php';
-
                                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                                     $pager = (new Pagination())->get('users', $page, ROW_OF_PAGE);
 
@@ -165,10 +158,10 @@
                                                 <tr>
                                                     <th>' . $user['Username'] . '</th>
                                                     <td>' . $user['Fullname'] . '</td>
-                                                    <td>' . $user['Phone'] . '</td>
+                                                    <td>' . Helper::Phone($user['Phone']) . '</td>
                                                     <td>' . $user['Email'] . '</td>
-                                                    <td><img height="50" src=' . ROOT_URL . $user['Avatar'] . ' alt="" /></td>
-                                                    <td>' . number_format($user['Money']) . '</td>
+                                                    <td><img height="50" src="' . $user['Avatar'] . '" alt="" /></td>
+                                                    <td>' . Helper::Currency($user['Money']) . '</td>
                                                     <td>' . Helper::StatusBadge($user['Status']) . '</td>
                                                     <td>' . Helper::AccountTypeBadge($user['AccountTypeID']) . '</td>
                                                     <td>
